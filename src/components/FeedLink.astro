@@ -1,0 +1,21 @@
+---
+import type { SelectProperty } from '../lib/interfaces.js'
+import '../styles/notion-color.css'
+
+export interface Props {
+  heading: string
+  tags: SelectProperty[]
+}
+
+const { heading } = Astro.props
+---
+
+<div class="feed-link">
+  <h2>{heading}</h2>
+  https://medeblogdayo.lprz.xyz/feed
+</div>
+
+<style>
+  .blog-tags-link {
+  }
+</style>
