@@ -13,10 +13,16 @@
 }
 
 .post {
+  /* max-width: 50%; */
   margin: 0 auto 40px;
+  display: inline-block;
 }
 .post footer {
   margin-top: 0.5rem;
   padding: 0;
   border: 0;
+}
+
+.post::after {
+  clear: both;
 }

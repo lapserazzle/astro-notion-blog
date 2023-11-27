@@ -4,7 +4,6 @@ import '../styles/notion-color.css'
 
 export interface Props {
   heading: string
-  tags: SelectProperty[]
 }
 
 const { heading } = Astro.props
@@ -12,10 +11,22 @@ const { heading } = Astro.props
 
 <div class="feed-link">
   <h2>{heading}</h2>
-  https://medeblogdayo.lprz.xyz/feed
+  <div class="url">https://medeblogdayo.lprz.xyz/feed</div>
 </div>
 
 <style>
-  .blog-tags-link {
+  .feed-link {
+  }
+  .feed-link h2 {
+    margin: 0;
+    padding-left: 0.4rem;
+    color: #fff;
+    font-size: 0.95rem;
+  }
+  .feed-link .url {
+    border: 1px #000000 solid;
+    margin-top: 0.3rem;
+    padding: 0 0.2em;
+    color: #ded;
   }
 </style>

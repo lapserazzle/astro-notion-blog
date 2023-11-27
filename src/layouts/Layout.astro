@@ -139,7 +139,7 @@ if (database.Icon && database.Icon.Type === 'file') {
 
             <footer>
               <div>
-                <span>Powered by</span>
+                <span>&copy; めでたい / 多摩川沖300m海底 / Powered by</span>
                 <a href="https://github.com/otoyo/astro-notion-blog"
                   >astro-notion-blog</a
                 >
@@ -194,7 +194,7 @@ if (database.Icon && database.Icon.Type === 'file') {
     order: 1;
     width: 300px;
     padding: 20px 20px;
-    background-color: #f4f4f4;
+    background-color: #80b799;
   }
   @media (max-width: 640px) {
     aside {
@@ -255,8 +255,9 @@ if (database.Icon && database.Icon.Type === 'file') {
   main header h1 a img.custom-icon {
     border-radius: var(--radius);
   }
-  main header h1 a img.custom-icon {
+  main header h1 a img.custom-title-image {
     width: 40%;
+    height: auto;
   }
 
   main header div.description {
@@ -291,8 +292,9 @@ if (database.Icon && database.Icon.Type === 'file') {
     --gap-double: 2rem;
 
     --bg: #fff;
-    --fg: #333;
-    --accents-1: #666;
+    --fg: #111;
+    --pointed: #1fac76;
+    --accents-1: #126b17;
     --accents-2: #666;
     --accents-3: #666;
     --geist-foreground: #000;
