@@ -5,6 +5,7 @@ import metascraperImage from 'metascraper-image'
 import metascraperTitle from 'metascraper-title'
 import { isAmazonURL } from '../../lib/blog-helpers.ts'
 import * as interfaces from '../../lib/interfaces.ts'
+import { AMAZON_ASSOCIATE_ID } from '../../server-constants'
 
 export interface Props {
   block: interfaces.Block
@@ -17,6 +18,7 @@ const urlString = (block.Bookmark || block.LinkPreview || block.Embed).Url
 
 let url: URL
 let metadata: Record<string, string>
+let asin: String
 try {
   url = new URL(urlString)
 
@@ -30,6 +32,10 @@ try {
     if (html) {
       metadata = await metascraper({ html, url })
     }
+  } else {
+    const asinreg = /[^0-9A-Z](?<asin>[0-9A-Z]{10})([^0-9A-Z]|$)/
+    const match = asinreg.exec(url.toString())
+    asin = match?.groups?.asin
   }
 } catch (err) {
   console.log(err)
@@ -40,9 +46,13 @@ try {
   url && (
     <>
       {isAmazonURL(url) ? (
-        <div class="no-metadata">
-          <a href={url.toString()}>{url.toString()}</a>
-        </div>
+        (AMAZON_ASSOCIATE_ID) ? (
+          <iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src={'//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=' + AMAZON_ASSOCIATE_ID + '&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=' + asin}></iframe>
+        ) : ( 
+          <div class="no-metadata">
+            <a href={url.toString()}>{url.toString()}</a>
+          </div>
+        )
       ) : (
         <div class="bookmark">
           <a href={url.toString()} target="_blank" rel="noopener noreferrer">

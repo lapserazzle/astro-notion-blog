@@ -15,3 +15,5 @@ export const REQUEST_TIMEOUT_MS = parseInt(
   10
 )
 export const ENABLE_LIGHTBOX = import.meta.env.ENABLE_LIGHTBOX
+
+export const AMAZON_ASSOCIATE_ID = import.meta.env.AMAZON_ASSOCIATE_ID || process.env.AMAZON_ASSOCIATE_ID || ''
