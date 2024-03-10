@@ -1,4 +1,10 @@
 ---
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  TwitterShareButton,
+  SocialShare
+} from "astro-social-share";
 import * as interfaces from '../../lib/interfaces.ts'
 import {
   getPosts,
@@ -108,6 +114,11 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
       <PostBody blocks={blocks} />
 
       <footer>
+        <SocialShare
+          buttons={[TwitterShareButton, FacebookShareButton, EmailShareButton]}
+          description={post.Title}
+          title={post.Title}
+        />
         <PostRelativeLink prevPost={prevPost} nextPost={nextPost} />
       </footer>
     </div>
