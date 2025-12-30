@@ -22,9 +22,9 @@ export interface Props {
 
 const { block } = Astro.props
 
-const code = JSON.stringify(block.Code.RichTexts.map(
+const code = block.Code.RichTexts.map(
   (richText: interfaces.RichText) => richText.Text.Content
-).join(''))
+).join('')
 const language = block.Code.Language.toLowerCase()
 const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
@@ -37,7 +37,7 @@ const grammer =
       language === 'mermaid' ? (
         <pre class="mermaid">{code}</pre>
       ) : language === "html" ? (
-        {code}
+        <Fragment set:html={code} />
       ) : (
           <>
             <div>
