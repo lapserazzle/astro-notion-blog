@@ -22,9 +22,9 @@ export interface Props {
 
 const { block } = Astro.props
 
-const code = block.Code.RichTexts.map(
+const code = JSON.stringify(block.Code.RichTexts.map(
   (richText: interfaces.RichText) => richText.Text.Content
-).join('')
+).join(''))
 const language = block.Code.Language.toLowerCase()
 const grammer =
   Prism.languages[language.toLowerCase()] || Prism.languages.javascript
